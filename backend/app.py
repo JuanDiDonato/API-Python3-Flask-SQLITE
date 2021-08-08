@@ -7,7 +7,7 @@ from flask_marshmallow import Marshmallow
 app = Flask(__name__)
 
 #DataBase config
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/juan/Escritorio/database/base.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/api.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -55,7 +55,6 @@ def new_employee():
 @app.route('/staff', methods=['GET'])
 def get_staff():
         all_staff = database_model.query.all()
-        print(all_staff)
         databaseSchemas.dump(all_staff)
         return databaseSchemas.jsonify(all_staff)
 
